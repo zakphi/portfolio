@@ -88,27 +88,36 @@ class portfolio_Admin {
 	function add_options_page_metabox() {
 
 		$cmb = new_cmb2_box( array(
-			'id'      => $this->metabox_id,
-			'hookup'  => false,
-			'show_on' => array(
+			'id'			=>	$this->metabox_id,
+			'hookup'	=>	false,
+			'show_on'	=>	array(
 				// These are important, don't remove
-				'key'   => 'options-page',
-				'value' => array( $this->key, )
+				'key'		=>	'options-page',
+				'value'	=>	array( $this->key, )
 			),
 		) );
 
 		// Set our CMB2 fields
 
 		$cmb->add_field( array(
-			'name' => __( 'Name', 'portfolio' ),
-			'id'   => 'my_name',
-			'type' => 'text',
+			'name'	=>	'Name',
+			'id'		=>	'my_name',
+			'type'	=>	'text',
 		) );
 
 		$cmb->add_field( array(
-			'name'    => __( 'Job Title', 'portfolio' ),
-			'id'      => 'job_title',
-			'type'    => 'text',
+			'name'		=>	'Job Title',
+			'id'			=>	'job_title',
+			'type'		=>	'text',
+		) );
+
+		$cmb->add_field( array(
+			'name'		=>	'Headshot',
+			'id'			=>	'headshot',
+			'type'		=>	'file',
+			'options' =>	array(
+				'url' => false,
+			),
 		) );
 
 	}
