@@ -7,8 +7,36 @@ fontsize($sizevalue = 2)
   font-size $sizevalue * 16 px
   font-size $sizevalue * 1 rem
 
-@import "css-reset"
+@import "styl/css-reset"
+@import "styl/header"
+@import "styl/front"
+@import "styl/work"
+@import "styl/about"
+@import "styl/contact"
+
+html
+body
+  overflow-x hidden
 
 body
   background-color dark-grey
   color light-grey
+  font-family "Myriad Pro", sans-serif
+#page
+  width 90%
+  margin 0 auto
+  #container
+    overflow hidden
+    margin 0 -9999em
+    /* add back negative margin value */
+    padding 0 9999em
+    text-align center
+    div:nth-child(even)
+      background-color light-grey
+      color dark-grey
+      overflow hidden
+      margin 0 -9999em
+      /* add back negative margin value */
+      padding 0 9999em
+    h1
+      fontsize(2.25)
