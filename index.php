@@ -26,13 +26,14 @@ get_header(); ?>
 				);
 				$pages = get_posts($args);
 				foreach ($pages as $page_data) {
-				    $content = apply_filters('the_content', $page_data->post_content);
+				    $content = $page_data->post_content;
 				    $title = $page_data->post_title;
 				    $slug = $page_data->post_name;
 				?>
 				<div class='<?php echo "$slug" ?>'>
 					<a name='<?php echo "$slug" ?>'><h1><?php echo "$title" ?></h1></a>
 					<p><?php echo "$content" ?></p>
+					<?php require __DIR__ . '/page-' . $slug . '.php'; ?>
 				</div>
 				<?php } ?>
 			</div>
