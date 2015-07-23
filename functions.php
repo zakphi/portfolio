@@ -190,29 +190,48 @@ function cmb2_sample_metaboxes() {
   /**
    * Initiate the metabox
    */
-  $cmb = new_cmb2_box( array(
-      'id'            => 'work_info',
-      'title'         => __( 'Work Info', 'cmb2' ),
-      'object_types'  => array( 'work', ), // Post type
-      'context'       => 'normal',
-      'priority'      => 'high',
-      'show_names'    => true, // Show field names on the left
+  $cmb_work = new_cmb2_box( array(
+    'id'            => 'work_info',
+    'title'         => __( 'Work Info', 'cmb2' ),
+    'object_types'  => array( 'work', ), // Post type
+    'context'       => 'normal',
+    'priority'      => 'high',
+    'show_names'    => true, // Show field names on the left
   ) );
 
   // Regular text field
-  $cmb->add_field( array(
-      'name'       => __( 'Description', 'cmb2' ),
-      'id'         => $prefix . 'desc',
-      'type'       => 'textarea_small',
+  $cmb_work->add_field( array(
+    'name'       => __( 'Description', 'cmb2' ),
+    'id'         => $prefix . 'desc',
+    'type'       => 'textarea_small',
   ) );
 
   // URL text field
-  $cmb->add_field( array(
-      'name' => __( 'URL', 'cmb2' ),
-      'id'   => $prefix . 'url',
-      'type' => 'text_url',
-      'protocols' => array('http', 'https'), // Array of allowed protocol
+  $cmb_work->add_field( array(
+    'name' => __( 'URL', 'cmb2' ),
+    'id'   => $prefix . 'url',
+    'type' => 'text_url',
+    'protocols' => array('http', 'https'), // Array of allowed protocol
   ) );
+
+	$cmb_about = new_cmb2_box( array(
+  	'id'            => 'my_info',
+    'title'         => __( 'My Info', 'cmb2' ),
+    'object_types'  => array( 'page', ), // Post type
+    'context'       => 'normal',
+    'priority'      => 'high',
+    'show_names'    => true, // Show field names on the left
+		'show_on'				=> array( 'id' => 12 ),
+  ) );
+
+	$cmb_about->add_field( array(
+		'name'		=>	'Resume',
+		'id'			=>	$prefix . 'resume',
+		'type'		=>	'file',
+		'options' =>	array(
+			'url' => false,
+		),
+	) );
 }
 
 require get_template_directory() . '/inc/admin-options.php';

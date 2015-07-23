@@ -7,12 +7,7 @@ fontsize($sizevalue = 2)
   font-size $sizevalue * 16 px
   font-size $sizevalue * 1 rem
 
-@import "styl/css-reset"
-@import "styl/header"
-@import "styl/front"
-@import "styl/work"
-@import "styl/about"
-@import "styl/contact"
+@import "css-reset"
 
 html
 body
@@ -22,6 +17,7 @@ body
   background-color dark-grey
   color light-grey
   font-family "Myriad Pro", sans-serif
+
 #page
   width 90%
   margin 0 auto
@@ -40,3 +36,47 @@ body
       padding 0 9999em
     h1
       fontsize(2.25)
+
+// header
+#masthead
+  background-color dark-blue
+  overflow hidden
+  margin 0 -9999em
+  /* add back negative margin value */
+  padding 0 9999em
+  height 5em
+  display table
+  width 100%
+  #site-navigation
+  h2
+    width 50%
+    display table-cell
+    vertical-align middle
+    a:link
+    a:visited
+      color light-grey
+      text-decoration none
+  #site-navigation
+    text-align right
+    text-transform uppercase
+    fontsize(1.25)
+    li
+      display inline
+      padding-right 1em
+    li:last-child
+      padding 0
+  h2
+    fontsize(2.25)
+
+// work
+.portfolio
+  li
+    display inline-block
+    width 33%
+
+// about
+.about
+  p
+    text-align left
+    width 75%
+    margin 0 auto
