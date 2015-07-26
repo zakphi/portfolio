@@ -16,7 +16,7 @@ get_header(); ?>
 	<div id="primary" class="content-area">
 		<main id="main" class="site-main" role="main">
 
-			<div id="container">
+			<div id="wrapper">
 				<?php
 				$args = array(
 					'orderby'			=>	'menu_order',
@@ -31,9 +31,12 @@ get_header(); ?>
 				    $slug = $page_data->post_name;
 				?>
 				<div class='<?php echo "$slug" ?>'>
-					<a name='<?php echo "$slug" ?>'><h1 class="section-title"><?php echo "$title" ?></h1></a>
-					<p><?php echo "$content" ?></p>
-					<?php require __DIR__ . '/page-' . $slug . '.php'; ?>
+					<div class="container">
+						<a name='<?php echo "$slug" ?>'></a>
+						<h1 class="section-title"><?php echo "$title" ?></h1>
+						<p><?php echo "$content" ?></p>
+						<?php require __DIR__ . '/page-' . $slug . '.php'; ?>
+					</div>
 				</div>
 				<?php } ?>
 			</div>
