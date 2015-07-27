@@ -23,6 +23,7 @@
 	<header id="masthead" class="site-header" role="banner">
 		<h2><a href="<?php echo home_url(); ?>"><?php echo portfolio_get_option( 'my_name' ); ?></a></h2>
 		<nav id="site-navigation" class="main-navigation" role="navigation">
+			<div id="menu-mobile"><a href="#">Menu</a></div>
 			<?php wp_nav_menu( array( 'theme_location' => 'primary', 'menu_id' => 'primary-menu' ) ); ?>
 		</nav><!-- #site-navigation -->
 	</header><!-- #masthead -->

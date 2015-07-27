@@ -71,10 +71,23 @@ body
     text-align right
     fontsize(1.25)
     li
-      display inline
-      padding-right 1em
-    li:last-child
-      padding 0
+      display block
+      width 100%
+      text-align center
+      padding-bottom 1em
+    li:first-child
+      padding-top 1em
+  #primary-menu
+    width 100%
+    display none
+    &.open
+      position absolute
+      z-index 999999
+      display block
+      right 0
+      top 8%
+      background-color dark-blue
+      color light-grey
 
 // front
 .front
@@ -153,6 +166,18 @@ form
   #masthead
     h2
       fontsize(2.25)
+    #menu-mobile
+      display none
+    #site-navigation
+      li
+        display inline
+        padding-right 1em
+      li:last-child
+      li:first-child
+        padding-top 0
+        padding-bottom 0
+    #primary-menu
+      display block
   .front
     img
       border-radius 50%
