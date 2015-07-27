@@ -27,7 +27,7 @@ body
     /* add back negative margin value */
     padding 0 9999em
     text-align center
-    div:nth-child(even)
+    > div:nth-child(even)
       background-color light-grey
       color dark-grey
       overflow hidden
@@ -37,6 +37,14 @@ body
     .section-title
       fontsize(2.25)
       padding .5em 0
+    > div
+      display table
+      width 100%
+      .container
+        display table-cell
+        vertical-align middle
+    > div:last-child
+      height inherit
 
 // header
 #masthead
@@ -45,7 +53,7 @@ body
   margin 0 -9999em
   /* add back negative margin value */
   padding 0 9999em
-  height 5em
+  height 10vh
   display table
   width 100%
   #site-navigation
@@ -53,11 +61,12 @@ body
     width 50%
     display table-cell
     vertical-align middle
-    fontsize(2.25)
     a:link
     a:visited
       color light-grey
       text-decoration none
+  h2
+    fontsize(2)
   #site-navigation
     text-align right
     fontsize(1.25)
@@ -70,25 +79,29 @@ body
 // front
 .front
   h1
-    fontsize(3.25)
-  h2
     fontsize(2.25)
+  h2
+    fontsize(1.25)
   .section-title
     display none
   img
     border-radius 50%
+    width 50%
 // work
 .portfolio
   li
     display inline-block
-    width 50%
+    width 100%
     float left
+    padding-bottom 1em
+    img
+      width 100%
 
 // about
 .about
   p
     text-align left
-    width 75%
+    width 100%
     margin 0 auto
     line-height 2
   a:link
@@ -100,6 +113,8 @@ body
 
 // contact
 form
+  display block
+  width 100%
   label
   input
   textarea
@@ -116,6 +131,8 @@ form
     color dark-grey
     fontsize(1.75)
     padding .25em
+    margin-bottom 1em
+    box-sizing : border-box;
     &:focus
       outline none
   textarea
@@ -126,10 +143,33 @@ form
   label
     padding-bottom .5em
     fontsize(1.25)
-  input
-  textarea
-    margin-bottom 1em
   input[type="submit"]
-    width 25%
+    width 50%
     text-align center
     float none
+
+// tablet
+@media screen and (min-width: 768px)
+  #masthead
+    h2
+      fontsize(2.25)
+  .front
+    img
+      border-radius 50%
+      width 25%
+    h1
+      fontsize(3.25)
+    h2
+      fontsize(2.25)
+  .portfolio
+    li
+      width 50%
+      padding 0
+      img
+        width inherit
+  .about
+    p
+      width 75%
+  form
+    input[type="submit"]
+      width 25%
