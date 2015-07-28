@@ -105,8 +105,10 @@ add_action( 'widgets_init', 'portfolio_widgets_init' );
  */
 function portfolio_scripts() {
 	wp_enqueue_style( 'portfolio-style', get_stylesheet_uri() );
+	wp_enqueue_style( 'font-awesome', 'http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css' );
 
 	wp_enqueue_script( 'portfolio-skip-link-focus-fix', get_template_directory_uri() . '/js/skip-link-focus-fix.js', array(), '20130115', true );
+	wp_enqueue_script( 'portfolio-min', get_template_directory_uri().'/js/min.js', array('jquery'), '20150727', true );
 
 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
 		wp_enqueue_script( 'comment-reply' );
@@ -138,3 +140,122 @@ require get_template_directory() . '/inc/customizer.php';
  * Load Jetpack compatibility file.
  */
 require get_template_directory() . '/inc/jetpack.php';
+
+function create_work_posttype()
+{
+  $labels = array(
+    'name'               => __( 'Work' ),
+    'singular_name'      => __( 'Work' ),
+    'add_new'            => __( 'Add New' ),
+    'add_new_item'       => __( 'Add New Work' ),
+    'edit_item'          => __( 'Edit Work' ),
+    'new_item'           => __( 'New Work' ),
+    'all_items'          => __( 'All Work' ),
+    'view_item'          => __( 'View Work' ),
+    'search_items'       => __( 'Search Work' ),
+    'not_found'          => __( 'No work found' ),
+    'not_found_in_trash' => __( 'No work found in the Trash' ),
+    'parent_item_colon'  => '',
+    'menu_name'          => 'Work'
+  );
+  $args = array(
+    'labels'        => $labels,
+    'description'   => 'My Work',
+    'public'        => true,
+    'menu_position' => 5,
+    'menu_icon' => 'dashicons-portfolio',
+    'supports' => array( 'title', 'thumbnail', 'page-attributes' ),
+    'has_archive'   => false
+  );
+  register_post_type( 'work', $args);
+}
+add_action( 'init', 'create_work_posttype' );
+
+/**
+ * Get the bootstrap!
+ */
+if ( file_exists(  __DIR__ . '/cmb2/init.php' ) ) {
+  require_once  __DIR__ . '/cmb2/init.php';
+} elseif ( file_exists(  __DIR__ . '/CMB2/init.php' ) ) {
+  require_once  __DIR__ . '/CMB2/init.php';
+}
+
+add_action( 'cmb2_init', 'cmb2_sample_metaboxes' );
+/**
+ * Define the metabox and field configurations.
+ */
+function cmb2_sample_metaboxes() {
+
+  // Start with an underscore to hide fields from custom fields list
+  $prefix = 'work_';
+
+  /**
+   * Initiate the metabox
+   */
+  $cmb_work = new_cmb2_box( array(
+    'id'            => 'work_info',
+    'title'         => __( 'Work Info', 'cmb2' ),
+    'object_types'  => array( 'work', ), // Post type
+    'context'       => 'normal',
+    'priority'      => 'high',
+    'show_names'    => true, // Show field names on the left
+  ) );
+
+  // Regular text field
+  $cmb_work->add_field( array(
+    'name'       => __( 'Description', 'cmb2' ),
+    'id'         => $prefix . 'desc',
+    'type'       => 'textarea_small',
+  ) );
+
+  // URL text field
+  $cmb_work->add_field( array(
+    'name' => __( 'URL', 'cmb2' ),
+    'id'   => $prefix . 'url',
+    'type' => 'text_url',
+    'protocols' => array('http', 'https'), // Array of allowed protocol
+  ) );
+
+	$cmb_about = new_cmb2_box( array(
+  	'id'            => 'my_info',
+    'title'         => __( 'My Info', 'cmb2' ),
+    'object_types'  => array( 'page', ), // Post type
+    'context'       => 'normal',
+    'priority'      => 'high',
+    'show_names'    => true, // Show field names on the left
+		'show_on'				=> array( 'id' => 12 ),
+  ) );
+
+	$cmb_about->add_field( array(
+		'name'		=>	'Resume',
+		'id'			=>	$prefix . 'resume',
+		'type'		=>	'file',
+		'options' =>	array(
+			'url' => false,
+		),
+	) );
+
+	$cmb_about_social = new_cmb2_box( array(
+  	'id'            => 'social_media',
+    'title'         => __( 'Social Media', 'cmb2' ),
+    'object_types'  => array( 'page', ), // Post type
+    'context'       => 'normal',
+    'priority'      => 'high',
+    'show_names'    => true, // Show field names on the left
+		'show_on'				=> array( 'id' => 12 ),
+  ) );
+
+	$cmb_about_social->add_field( array(
+    'name' => __( 'LinkedIn', 'cmb2' ),
+    'id'   => $prefix . 'linkedin_url',
+    'type' => 'text_url',
+  ) );
+
+	$cmb_about_social->add_field( array(
+    'name' => __( 'Github', 'cmb2' ),
+    'id'   => $prefix . 'github_url',
+    'type' => 'text_url',
+  ) );
+}
+
+require get_template_directory() . '/inc/admin-options.php';

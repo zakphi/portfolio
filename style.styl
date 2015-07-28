@@ -1,0 +1,210 @@
+dark-grey = rgb(34,34,34)
+light-grey = rgb(221,221,221)
+blue = rgb(53,91,124)
+dark-blue = rgb(25,36,46)
+
+fontsize($sizevalue = 2)
+  font-size $sizevalue * 16 px
+  font-size $sizevalue * 1 rem
+
+@import "css-reset"
+
+html
+body
+  overflow-x hidden
+
+body
+  background-color dark-grey
+  color light-grey
+  font-family "Myriad Pro", sans-serif
+
+#page
+  width 90%
+  margin 0 auto
+  #wrapper
+    overflow hidden
+    margin 0 -9999em
+    /* add back negative margin value */
+    padding 0 9999em
+    text-align center
+    > div:nth-child(even)
+      background-color light-grey
+      color dark-grey
+      overflow hidden
+      margin 0 -9999em
+      /* add back negative margin value */
+      padding 0 9999em
+    .section-title
+      fontsize(2.25)
+      padding-bottom .5em
+    .container
+      padding 2em 0
+      overflow hidden
+
+// header
+#masthead
+  background-color dark-blue
+  overflow hidden
+  margin 0 -9999em
+  /* add back negative margin value */
+  padding 0 9999em
+  height 10vh
+  display table
+  width 100%
+  #site-navigation
+  h2
+    width 50%
+    display table-cell
+    vertical-align middle
+    a:link
+    a:visited
+      color light-grey
+      text-decoration none
+  h2
+    fontsize(2)
+  #site-navigation
+    text-align right
+    fontsize(1.25)
+    li
+      display block
+      width 100%
+      text-align center
+      padding-bottom 1em
+    li:first-child
+      padding-top 1em
+  #primary-menu
+    width 100%
+    display none
+    &.open
+      position absolute
+      z-index 999999
+      display block
+      right 0
+      top 8%
+      background-color dark-blue
+      color light-grey
+
+// front
+.front
+  h1
+    fontsize(2.25)
+    padding .5em 0 0
+  h2
+    fontsize(1.25)
+  .section-title
+    display none
+  img
+    border-radius 50%
+    width 50%
+// work
+.portfolio
+  li
+    display inline-block
+    width 100%
+    float left
+    padding-bottom 1em
+    line-height 0
+    img
+      width 100%
+
+// about
+.about
+  p
+    text-align left
+    width 100%
+    margin 0 auto
+    line-height 2
+  .resume_link
+  .social_media
+    a:link
+    a:visited
+      color light-grey
+      text-decoration none
+    a:hover
+      border-bottom 1px solid light-grey
+    padding-top 1em
+  .resume_link
+    display block
+  .social_media
+    overflow hidden
+    a:link
+      fontsize(2)
+      padding 0 1em
+    a:hover
+      border none
+
+// contact
+form
+  display block
+  width 100%
+  label
+  input
+  textarea
+    width 100%
+  label
+  input
+  textarea
+    float left
+    text-align left
+  input
+  textarea
+    border 1px solid dark-grey
+    background-color transparent
+    color dark-grey
+    fontsize(1.75)
+    padding .25em
+    margin-bottom 1em
+    box-sizing : border-box;
+    &:focus
+      outline none
+  textarea
+    resize none
+    height 5em
+  span
+    color red
+  label
+    padding-bottom .5em
+    fontsize(1.25)
+  input[type="submit"]
+    width 50%
+    text-align center
+    float none
+    margin 0
+
+// tablet
+@media screen and (min-width: 768px)
+  #masthead
+    h2
+      fontsize(2.25)
+    #menu-mobile
+      display none
+    #site-navigation
+      li
+        display inline
+        padding-right 1em
+      li:last-child
+      li:first-child
+        padding-top 0
+        padding-bottom 0
+    #primary-menu
+      display block
+  .front
+    img
+      border-radius 50%
+      width 25%
+    h1
+      fontsize(3.25)
+    h2
+      fontsize(2.25)
+  .portfolio
+    li
+      width 50%
+      padding 0
+      img
+        width inherit
+  .about
+    p
+      width 75%
+  form
+    input[type="submit"]
+      width 25%
