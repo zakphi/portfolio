@@ -105,6 +105,7 @@ add_action( 'widgets_init', 'portfolio_widgets_init' );
  */
 function portfolio_scripts() {
 	wp_enqueue_style( 'portfolio-style', get_stylesheet_uri() );
+	wp_enqueue_style( 'font-awesome', 'http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css' );
 
 	wp_enqueue_script( 'portfolio-skip-link-focus-fix', get_template_directory_uri() . '/js/skip-link-focus-fix.js', array(), '20130115', true );
 	wp_enqueue_script( 'portfolio-min', get_template_directory_uri().'/js/min.js', array('jquery'), '20150727', true );
@@ -233,6 +234,28 @@ function cmb2_sample_metaboxes() {
 			'url' => false,
 		),
 	) );
+
+	$cmb_about_social = new_cmb2_box( array(
+  	'id'            => 'social_media',
+    'title'         => __( 'Social Media', 'cmb2' ),
+    'object_types'  => array( 'page', ), // Post type
+    'context'       => 'normal',
+    'priority'      => 'high',
+    'show_names'    => true, // Show field names on the left
+		'show_on'				=> array( 'id' => 12 ),
+  ) );
+
+	$cmb_about_social->add_field( array(
+    'name' => __( 'LinkedIn', 'cmb2' ),
+    'id'   => $prefix . 'linkedin_url',
+    'type' => 'text_url',
+  ) );
+
+	$cmb_about_social->add_field( array(
+    'name' => __( 'Github', 'cmb2' ),
+    'id'   => $prefix . 'github_url',
+    'type' => 'text_url',
+  ) );
 }
 
 require get_template_directory() . '/inc/admin-options.php';

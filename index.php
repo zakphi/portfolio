@@ -34,7 +34,7 @@ get_header(); ?>
 					<div class="container">
 						<a name='<?php echo "$slug" ?>'></a>
 						<h1 class="section-title"><?php echo "$title" ?></h1>
-						<p><?php echo "$content" ?></p>
+						<?php if(!empty($content)) : echo '<p>'.$content.'</p>'; endif; ?>
 						<?php require __DIR__ . '/page-' . $slug . '.php'; ?>
 					</div>
 				</div>

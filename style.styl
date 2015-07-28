@@ -36,15 +36,10 @@ body
       padding 0 9999em
     .section-title
       fontsize(2.25)
-      padding .5em 0
-    > div
-      display table
-      width 100%
-      .container
-        display table-cell
-        vertical-align middle
-    > div:last-child
-      height inherit
+      padding-bottom .5em
+    .container
+      padding 2em 0
+      overflow hidden
 
 // header
 #masthead
@@ -93,6 +88,7 @@ body
 .front
   h1
     fontsize(2.25)
+    padding .5em 0 0
   h2
     fontsize(1.25)
   .section-title
@@ -107,6 +103,7 @@ body
     width 100%
     float left
     padding-bottom 1em
+    line-height 0
     img
       width 100%
 
@@ -117,12 +114,24 @@ body
     width 100%
     margin 0 auto
     line-height 2
-  a:link
-  a:visited
-    color light-grey
-    text-decoration none
-  a:hover
-    border-bottom 1px solid light-grey
+  .resume_link
+  .social_media
+    a:link
+    a:visited
+      color light-grey
+      text-decoration none
+    a:hover
+      border-bottom 1px solid light-grey
+    padding-top 1em
+  .resume_link
+    display block
+  .social_media
+    overflow hidden
+    a:link
+      fontsize(2)
+      padding 0 1em
+    a:hover
+      border none
 
 // contact
 form
@@ -160,6 +169,7 @@ form
     width 50%
     text-align center
     float none
+    margin 0
 
 // tablet
 @media screen and (min-width: 768px)
