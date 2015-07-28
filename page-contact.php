@@ -6,7 +6,7 @@
   <input type="email" id="email" name="_replyto" />
   <label for="phone">Phone</label>
   <input type="phone" />
-  <label for="message">Name<span>*</span></label>
+  <label for="message">Message<span>*</span></label>
   <textarea id="message" name="message"></textarea>
   <input type="submit" id="submit" value="Send" />
 </form>
