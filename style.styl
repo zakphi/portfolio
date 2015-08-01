@@ -69,9 +69,6 @@ body
       display block
       width 100%
       text-align center
-      padding-bottom 1em
-    li:first-child
-      padding-top 1em
   #primary-menu
     width 100%
     display none
@@ -180,6 +177,14 @@ form
       img
         width inherit
 
+@media screen and (max-width:480px)
+  #masthead
+    #site-navigation
+      li
+        padding-bottom 1em
+      li:first-child
+        padding-top 1em
+
 @media screen and (min-width: 768px)
   #masthead
     h2
@@ -191,9 +196,7 @@ form
         display inline
         padding-right 1em
       li:last-child
-      li:first-child
-        padding-top 0
-        padding-bottom 0
+        padding 0
     #primary-menu
       display block
   .front
