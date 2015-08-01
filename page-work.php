@@ -1,5 +1,5 @@
 <?php
-  $args = array( 'post_type' => 'work', 'orderby' => 'menu_order', 'order' => 'ASC');
+  $args = array( 'post_type' => 'work', 'orderby' => 'menu_order', 'order' => 'DESC');
   $loop = new WP_Query( $args );
 ?>
 <ul class="portfolio">
