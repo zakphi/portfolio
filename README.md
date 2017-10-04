@@ -1,3 +1,3 @@
-Wordpress theme for portfolio site
+portoflio site not built with wordpress anymore
 
-http://philipzak.com
+check out [https://github.com/zakphi/portfolioV2](https://github.com/zakphi/portfolioV2) for new version of portfolio
